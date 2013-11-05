@@ -1,0 +1,15 @@
+<html>
+        <body>
+            <!-- calls getBooks() from HomeResource -->
+            <table border="1">
+            {{#books}}
+                <tr>
+                    <td>{{isbn}}</td>
+                    <td>{{title}}</td>
+                    <td>{{category}}</td>
+                    <td>{{status}}</td>
+                </tr>
+            {{/books}}
+            </table>
+        </body>
+</html>
