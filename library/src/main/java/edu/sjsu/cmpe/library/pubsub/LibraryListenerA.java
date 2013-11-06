@@ -26,11 +26,7 @@ public class LibraryListenerA {
     	String host = libraryServiceConfiguration.getApolloHost();
     	int port = Integer.parseInt(libraryServiceConfiguration.getApolloPort());
 
-		/*String user = env("APOLLO_USER", "admin");
-		String password = env("APOLLO_PASSWORD", "password");
-		String host = env("APOLLO_HOST", "54.215.210.214");
-		int port = Integer.parseInt(env("APOLLO_PORT", "61613"));*/
-
+		
 		StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
 		factory.setBrokerURI("tcp://" + host + ":" + port);
 
@@ -163,6 +159,7 @@ public class LibraryListenerA {
 		connection.close();
 	}
 	
+	@SuppressWarnings("unused")
 	private static String env(String key, String defaultValue) {
 		String rc = System.getenv(key);
 		if( rc== null ) {

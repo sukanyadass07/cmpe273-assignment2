@@ -24,10 +24,7 @@ public class Producer {
     	String host = libraryServiceConfiguration.getApolloHost();
     	int port = Integer.parseInt(libraryServiceConfiguration.getApolloPort());
     	
-    	/*String user = env("APOLLO_USER", "admin");
-	String password = env("APOLLO_PASSWORD", "password");
-	String host = env("APOLLO_HOST", "54.215.210.214");*/
-	//int port = Integer.parseInt(env("APOLLO_PORT", "61613"));
+    	
 	String queue = "/queue/66309.book.orders";
 	String destination = "/queue/66309.book.orders";
 
@@ -56,7 +53,8 @@ public class Producer {
 
     }
 
-    private static String env(String key, String defaultValue) {
+    @SuppressWarnings("unused")
+	private static String env(String key, String defaultValue) {
 	String rc = System.getenv(key);
 	if( rc== null ) {
 	    return defaultValue;

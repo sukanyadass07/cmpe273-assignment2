@@ -13,6 +13,7 @@ import org.fusesource.stomp.jms.StompJmsDestination;
 import org.fusesource.stomp.jms.message.StompJmsMessage;
 
 import edu.sjsu.cmpe.library.config.LibraryServiceConfiguration;
+import edu.sjsu.cmpe.library.repository.SplitMessage;
 
 public class LibraryListenerB {
 	
@@ -25,12 +26,8 @@ public class LibraryListenerB {
     	String host = libraryServiceConfiguration.getApolloHost();
     	int port = Integer.parseInt(libraryServiceConfiguration.getApolloPort());
     	
-		/*String user = env("APOLLO_USER", "admin");
-		String password = env("APOLLO_PASSWORD", "password");
-		String host = env("APOLLO_HOST", "54.215.210.214");
-		int port = Integer.parseInt(env("APOLLO_PORT", "61613"));*/
-		String destination = "/topic/66309.book.computer";
-		//String destination = "/topic/event";
+    	String destination = "/topic/66309.book.computer";
+		
 
 		StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
 		factory.setBrokerURI("tcp://" + host + ":" + port);
@@ -50,10 +47,18 @@ public class LibraryListenerB {
 			 if( msg instanceof  TextMessage ) {
 		           String body = ((TextMessage) msg).getText();
 		           System.out.println("LibraryB Received TextMessage for ComputerTextMsg = " + body);
+		           if(body != null){
+				    	SplitMessage splitMessage = new SplitMessage();
+				    	splitMessage.splitMessage(body);
+				    	}
 		    }else if (msg instanceof StompJmsMessage) {
 				StompJmsMessage smsg = ((StompJmsMessage) msg);
 				String body = smsg.getFrame().contentAsString();
 				System.out.println("LibraryB Received StompJmsMessage for ComputerStompMsg = " + body);
+				if(body != null){
+			    	SplitMessage splitMessage = new SplitMessage();
+			    	splitMessage.splitMessage(body);
+			    	}
 		    } else if (msg == null) {
 		          System.out.println("LibraryB No new messages. Existing due to timeout - " + waitUntil / 1000 + " sec");
 		          break;

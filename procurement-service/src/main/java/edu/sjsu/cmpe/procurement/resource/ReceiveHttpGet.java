@@ -35,10 +35,10 @@ public class ReceiveHttpGet {
 				for(int i = 0; i< book.size(); i++){
 					Book receivedBooks = new Book();
 					receivedBooks = book.get(i);
-					System.out.println(receivedBooks.getIsbn());
-					System.out.println(receivedBooks.getTitle());
-					System.out.println(receivedBooks.getCategory());
-					System.out.println(receivedBooks.getCoverimage());
+					System.out.println("ISBN:" + receivedBooks.getIsbn());
+					System.out.println("TITLE:" + receivedBooks.getTitle());
+					System.out.println("CATEGORY:" + receivedBooks.getCategory());
+					System.out.println("COVER-IMAGE:" + receivedBooks.getCoverimage());
 				}
 			
 			

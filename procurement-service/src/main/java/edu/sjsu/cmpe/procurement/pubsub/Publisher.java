@@ -14,6 +14,7 @@ import javax.jms.TextMessage;
 import org.fusesource.stomp.jms.StompJmsConnectionFactory;
 import org.fusesource.stomp.jms.StompJmsDestination;
 
+import edu.sjsu.cmpe.procurement.config.ProcurementServiceConfiguration;
 import edu.sjsu.cmpe.procurement.domain.Book;
 
 public class Publisher {
@@ -26,12 +27,13 @@ public class Publisher {
 	public void publishTopics(ArrayList <Book> shippedBooks) throws JMSException {
 		
 			
+		
+		
 		String user = env("APOLLO_USER", "admin");
 		String password = env("APOLLO_PASSWORD", "password");
 		String host = env("APOLLO_HOST", "54.215.210.214");
 		int port = Integer.parseInt(env("APOLLO_PORT", "61613"));
-		//String destination = "/topic/66309.books." + Book.getCategory();
-
+		
 		StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
 		factory.setBrokerURI("tcp://" + host + ":" + port);
 
