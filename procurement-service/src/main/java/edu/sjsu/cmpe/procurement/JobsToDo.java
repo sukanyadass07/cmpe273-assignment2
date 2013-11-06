@@ -13,7 +13,7 @@ import edu.sjsu.cmpe.procurement.resource.ReceiveHttpGet;
 import edu.sjsu.cmpe.procurement.resource.SendHttpPost;
 
 
-@Every("50s")
+@Every("5mn")
 public class JobsToDo extends Job {
 	
 	@SuppressWarnings("rawtypes")
