@@ -1,5 +1,5 @@
 $(":button").click(function() {
-    var isbn = this.id;
+    var isbn = this.id;  
     alert('About to report lost on ISBN ' + isbn);
     
     $.ajax({
@@ -8,14 +8,11 @@ $(":button").click(function() {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
            alert("status received");
-           window.location.reload(true);
-           $('#bookTable tr').each(function() {
-        	    var STATUS = $(this).find("td").eq(4).html(); 
-        	    if(STATUS == "lost")
-        	           $(":button").attr("disabled", true);
-        	});
-           
-          
+           var buttonId="#"+isbn;
+           var statusID = "#status"+isbn;
+           $(statusID).text("lost");
+           $(buttonId).prop("disabled",true);
+ 
         },
     
         error: function (jqXHR, status) {
